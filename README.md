@@ -1,22 +1,19 @@
-## Perceptron
+## Multi-Layer Perceptron
 
-File `​dataset.py​` contains the letters A through Z as 5-by-7 dot-matrix fonts, in a format similar to the [​Hebb Net example​] for character recognition. There are two different fonts, one for training and one for test.
-[​NumPy​] is to implement vector operations such as dot product, and [Matplotlib] library to generate plots.
+This project uses the [Keras] library and the extended MNIST [EMNIST] dataset of handwritten digits. This dataset​ expands on the original MNIST, adding handwritten letters as well as additional samples of handwritten digits. There are several "splits" of the data by various characteristics. This project uses the "EMNIST Letters" dataset in particular, which contains data split into 26 classes, one for each letter in the English alphabet.
 
-## Training Perceptrons
+## More on the Dataset
 
-There are 26 perceptrons in total, one for each letter. Each perceptron learns to output 1 for its assigned letter and 0 for all other letters. Weights and biases are initialized to random values (rather than zero) for each perceptron, following which the ​[perceptron learning algorithm​] is applied until all items in the training set are classified correctly or until it becomes clear that the weights will not converge.
+[​Matlab format dataset​] is downloaded and extracted, and from it the file `​matlab/emnist-letters.mat​` is used. This dataset folds together both upper- and lowercase letters into a single class. The `​data['mapping']`​ field maps from class numbers to ASCII codes of their corresponding letters. For example, class 1 maps to ASCII codes 65 and 97 (`​'A'`​ and `​'a'`​). This may affect network design. The dataset can be reshaped into either a 2D array of size 28x28 or 1D array of size 784. The data is already split into *training* and *test* sets. *Validation* set is obtained from the *training* set. More details on [EMNIST Paper].
 
-The output of each perceptron, which classifies an item in the training set, is recorded for correctness. At the end of each pass through the training set, the *error rate* (number of misclassified items) of that perceptron is also recorded for that epoch.
+## MLP for EMNIST Letters
 
-## Testing the Learned Weights
+Since the EMNIST Letters data has 26 classes and mixes upper- and lowercase letters within each class, a network architecture consisting of three layers - input, hidden, and output, with a batch size of 128, number of classes as 26, and number of epochs as 20 is evaluated.
 
-If a letter is linearly separable from the others and the learning rate is small enough, there is a downward trend in error rate until each point is classified correctly. *matplotlib* is used to ​plot the error rate as a function of the number of epochs​ in order to visualize this trend.
+This architecture is evaluated using different activation functions like **ReLU**, **Softmax**, **tanh**, and **Sigmoid**, with *early stopping* and *L2 regularization* with 2048 neurons, and other additonal parameters described in the Jupyter notebook.
 
-Once the perceptrons have been trained (in other words, once the perceptrons for the letters which are linearly separable from other letters have converged), each trained perceptron is tested against the letters in the test set.
 
-[​Hebb Net example​]: https://gist.github.com/ProfAvery/01fc74d75accbe3c1926550a2ca05e4d
-[perceptron learning algorithm​]: https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm
-[Matplotlib]: https://matplotlib.org
-[​NumPy​]: https://numpy.org
-
+[Keras]: https://keras.io
+[EMNIST]: https://www.nist.gov/itl/products-and-services/emnist-dataset
+[EMNIST Paper]: https://arxiv.org/abs/1702.05373
+[​Matlab format dataset​]: http://www.itl.nist.gov/iaui/vip/cs_links/EMNIST/matlab.zip

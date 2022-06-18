@@ -1,14 +1,16 @@
-## Convolutional Neural Network
+# Artificial Neural Networks
 
-Convolutional neural networks are computationally more intensive (in terms of minutes per epoch) than multi-layer perceptrons, which makes the presence of a GPU or TPU even more important. 
+This repository contains projects of the Artificial Neural Networks coursework from Cal State Fullerton.
 
-This project uses the EMNIST letters dataset which is built into [Tensorflow]. A validation set is also used as lots of hyperparameters are tuned, and also because it is a good practice. The test set is used only for the final evaluation of the trained and tuned network.
+Each project has its own branch:
 
-## CNN for EMNIST Letters
++ [perceptron][1]
 
-This project builds upon [MLP for EMNIST Letters] where alternative architectures are explored, and more hyperparameters and optimizers are tuned. The training process is visualized by plotting a loss curve using [TensorBoard].
++ [multi-layer perceptron][2]
+
++ [convolutional neural network][3]
 
 
-[Tensorflow]: https://www.tensorflow.org/
-[MLP for EMNIST Letters]: https://github.com/saurami/Multi-Layer-Perceptron
-[TensorBoard]: https://www.tensorflow.org/tensorboard/get_started 
+[1]: https://github.com/saurami/neuralnets/tree/project-1
+[2]: https://github.com/saurami/neuralnets/tree/project-2
+[3]: https://github.com/saurami/neuralnets/tree/project-3
